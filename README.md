@@ -75,3 +75,80 @@ Visualization and interpretation of the clustering results are essential to comm
 The clustering analysis identifies Cluster 1 as the most lucrative segment, characterized by high-income individuals with a propensity for high spending, with approximately 54% being women shoppers. Tailored marketing campaigns should focus on personalized services, exclusive offers, and loyalty programs to retain and attract these high-value customers. Additionally, targeting popular items favored by this cluster can further enhance customer engagement and drive revenue growth. Cluster 2, comprising customers with lower income and spending score, presents an opportunity for targeted sales events to stimulate spending on popular items and increase overall sales volume. By leveraging these insights, the mall can optimize marketing strategies and improve overall business performance.
 
 ---
+**PROJECT 2**
+
+**Fake News Detection**
+
+**Objective**
+
+The primary objective of this project is to develop a machine learning model capable of accurately detecting fake news articles. With the proliferation of misinformation and false information online, it's essential to create a reliable system that can distinguish between genuine and fabricated news content. By leveraging machine learning algorithms, the project aims to achieve accurate detection of fake news using a dataset of labeled news articles.
+
+**Dataset**
+
+The project utilizes two datasets:
+
+-  Fake.csv containing fake news articles.
+-  True.csv containing true news articles.
+
+**Data Preprocessing**
+
+The data preprocessing steps include:
+
+-  Merging the fake and true news datasets and adding a class label (0 for fake news, 1 for true news).
+-  Dropping irrelevant columns (title, subject, date) to focus on the text content and class label.
+-  Shuffling the merged dataset to ensure randomness.
+-  Cleaning the text data by:
+      Converting text to lowercase.
+      Removing special characters, URLs, and HTML tags.
+      Removing punctuation and numerical values.
+
+**Model Training**
+
+The cleaned text data is split into training and testing sets using an 75-25 split. The TfidfVectorizer is used to convert the text data into numerical features suitable for model training.
+
+Four machine learning models are trained on the vectorized text data:
+
+-  Logistic Regression
+-  Decision Tree Classifier
+-  Gradient Boosting Classifier
+-  Random Forest Classifier
+
+**Model Evaluation**
+
+Each model is evaluated based on accuracy, precision, recall, and F1-score. The models are compared to determine the best performer.
+
+**Results**
+The performance of each model is evaluated based on accuracy, precision, recall, and F1-score. The results demonstrate that all models perform exceptionally well in distinguishing between fake and true news:
+
+Logistic Regression:
+
+-  Accuracy: 98.67%
+-  Precision, Recall, and F1-score: 0.99
+
+ Decision Tree:
+
+-  Accuracy: 99.48%
+-  Precision, Recall, and F1-score: 1.00 (for the true news class)
+
+Gradient Boosting:
+
+-  Accuracy: 99.51%
+-  Precision and Recall: High values with an F1-score of 0.99
+
+Random Forest:
+
+
+-  Accuracy: 98.96%
+-  Precision, Recall, and F1-score: 0.99
+
+Ensemble models like Gradient Boosting and Decision Tree demonstrate superior performance due to their ability to handle complex data patterns effectively.
+
+**Manual Testing**
+
+A manual testing function is provided to predict the class of a given news article using all four trained models. This function cleans the input text, vectorizes it using the TfidfVectorizer, and outputs the predictions from each model.
+
+**Conclusion**
+
+This project successfully demonstrates the use of machine learning techniques to detect fake news with high accuracy. Ensemble models, in particular, show great promise in handling the complexities of text data, making them suitable for real-world applications in fake news detection.
+
+---
