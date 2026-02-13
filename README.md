@@ -152,3 +152,163 @@ A manual testing function is provided to predict the class of a given news artic
 This project successfully demonstrates the use of machine learning techniques to detect fake news with high accuracy. Ensemble models, in particular, show great promise in handling the complexities of text data, making them suitable for real-world applications in fake news detection.
 
 ---
+
+**PROJECT 3**
+
+**Multi-Label Text Mining and Classification Using TMC2007 Dataset**
+
+The goal of this project is to build a complete multi-label text classification pipeline capable of extracting meaningful patterns from high-dimensional unstructured text data. Unlike traditional classification tasks where each document belongs to only one category, this project focuses on multi-label classification, where each document may belong to multiple topics simultaneously.
+
+Using the TMC2007 benchmark dataset, this project implements an end-to-end Natural Language Processing (NLP) workflow including data loading, sparse feature handling, model training, threshold tuning, and advanced evaluation metrics. The project emphasizes handling label imbalance and optimizing Macro F1-score through per-label threshold tuning.
+
+**Objective**
+
+The primary objective of this project is to design a scalable machine learning system that accurately assigns multiple topic labels to each document. This involves:
+
+- Handling high-dimensional sparse text data (LIBSVM format).
+
+- Implementing a One-vs-Rest multi-label classification strategy.
+
+- Addressing label imbalance using Macro and Micro F1 metrics.
+
+- Improving performance using per-label threshold tuning.
+
+- Evaluating model robustness using multiple multi-label metrics.
+
+**Dataset**
+
+The project uses the TMC2007 Multi-Label Text Classification Dataset.
+
+- Source: LIBSVM Multi-label Datasets
+
+- Format: Sparse LIBSVM (.svm)
+
+- Task Type: Multi-label classification
+
+Characteristics:
+
+- High-dimensional sparse features
+
+- Imbalanced label distribution
+
+- Real-world text mining benchmark dataset
+
+Each document is represented as a sparse vector of term features, and each sample may contain multiple labels.
+
+**Data Loading and Preprocessing**
+
+The first step involves loading and preparing the sparse text dataset for training and evaluation.
+
+- Load LIBSVM sparse format using Scikit-learn.
+
+- Convert sparse matrices into appropriate multi-label format.
+
+- Split training data into training and validation sets.
+
+- Preserve sparse matrix structure for memory efficiency.
+
+- Prepare label matrices for multi-label classification.
+
+- Unlike traditional NLP pipelines, this dataset is already vectorized, allowing direct model training without TF-IDF transformation.
+
+**Exploratory Data Analysis (EDA)**
+
+Exploratory analysis focuses on understanding dataset characteristics rather than raw text visualization.
+
+- Analyze number of samples and features.
+
+- Examine label distribution across documents.
+
+- Identify label imbalance patterns.
+
+- Calculate average number of labels per document.
+
+- Evaluate sparsity level of feature matrix.
+
+Understanding label imbalance is crucial because it directly impacts Macro F1-score performance.
+
+**Model Training**
+
+The multi-label classification problem is handled using the One-vs-Rest strategy.
+
+Base Model:
+
+- Logistic Regression (Linear classifier suitable for high-dimensional sparse data)
+
+Training Strategy:
+
+- Train one classifier per label.
+
+- Use sparse matrix input for computational efficiency.
+
+- Optimize solver for high-dimensional datasets.
+
+The model outputs probability scores for each label, which are later refined using threshold tuning.
+
+**Threshold Optimization**
+
+A major enhancement in this project is per-label threshold tuning.
+
+Instead of using a fixed 0.5 threshold for all labels:
+
+- Evaluate multiple threshold values (0.1–0.9).
+
+- Optimize each label’s threshold individually.
+
+- Maximize F1-score per label.
+
+- Apply tuned thresholds to test data.
+
+This significantly improves Macro F1-score, particularly for rare labels.
+
+**Model Evaluation**
+
+Since this is a multi-label classification problem, traditional accuracy is insufficient.
+
+The model is evaluated using:
+
+- Hamming Loss
+
+- Micro F1-score
+
+- Macro F1-score
+
+Why these metrics?
+
+- Hamming Loss measures the fraction of incorrect labels.
+
+- Micro F1 considers label frequency (good for common labels).
+
+- Macro F1 treats all labels equally (critical for imbalance).
+
+  
+**Results**
+The model achieves strong performance on a real-world multi-label dataset:
+
+Hamming Loss: ~0.05
+
+Micro F1-score: ~0.68
+
+Macro F1-score (After Threshold Tuning): ~0.65+
+
+The improvement in Macro F1-score demonstrates effective handling of label imbalance and rare topic prediction.
+
+Threshold tuning significantly enhances the model’s ability to detect underrepresented labels without sacrificing overall performance.
+
+**Conclusion**
+
+This project demonstrates a complete multi-label NLP pipeline built using production-ready machine learning practices. It highlights key challenges in text mining such as high-dimensional sparse data and label imbalance.
+
+By implementing threshold optimization and robust evaluation metrics, the project provides a scalable and interpretable solution to real-world multi-label classification problems.
+
+This work showcases strong foundations in:
+
+- Natural Language Processing (NLP)
+
+- Multi-label classification
+
+- Model evaluation strategies
+
+- Performance optimization
+
+---
